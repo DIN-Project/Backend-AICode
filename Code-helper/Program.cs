@@ -9,10 +9,14 @@ builder.Services.AddControllers();
 builder.Services.Configure<OpenAiConfig>(builder.Configuration.GetSection("OpenAI"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(policyBuilder =>
+    policyBuilder.AddDefaultPolicy(policy =>
+        policy.WithOrigins("*").AllowAnyHeader().AllowAnyHeader()));
 
 builder.Services.AddScoped<IOpenAiServices, OpenAiServices>();
 
 var app = builder.Build();
+app.UseCors();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
