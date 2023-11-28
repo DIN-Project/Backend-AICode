@@ -19,13 +19,6 @@ public class OpenAiController : ControllerBase
         _openAiService = openAiServices;
     }
 
-    [HttpPost()]
-    [Route("CompleteSentence")]
-    public async Task<IActionResult> CompleteSentence(string text)
-    {
-        var result = await _openAiService.CodeChecker(text);
-        return Ok(result);
-    }
      [HttpPost()]
     [Route("CheckCode")]
     public async Task<IActionResult> CheckCode(string text)

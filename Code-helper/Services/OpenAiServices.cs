@@ -23,13 +23,6 @@ public class OpenAiServices : IOpenAiServices
         return result.Completions[0].Text;
     }
 
-    public async Task<string> CompleteSentence(string text)
-    {
-        var api = new OpenAI_API.OpenAIAPI(_openAiConfig.Key);
-        var result = await api.Completions.GetCompletion(text);
-        return result; 
-    }
-
     public async Task<string> FixCode(string code)
     {
         var api = new OpenAI_API.OpenAIAPI(_openAiConfig.Key);
